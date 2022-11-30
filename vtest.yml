@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: 2pods
+spec:
+  containers:
+  - name: bear
+    image: supergiantkir/animals:bear
+    volumeMounts:
+    - name: app-storage
+      mountPath: /storage
+  - name: springapp
+    image: yanivomc/spring-music:latest
+    volumeMounts:
+    - name: app-storage
+      mountPath: /storage
+  volumes:
+  - name: app-storage
+    hostPath:
+      path: /tmp/files
